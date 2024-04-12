@@ -1,9 +1,15 @@
 import { mergeAttributes, Node } from '@tiptap/core'
 
-const Variable = Node.create({
+export interface VariableOptions {
+  endCharacter: string;
+  HTMLAttributes: Record<string, any>;
+  startCharacter: string;
+}
+
+const Variable = Node.create<VariableOptions>({
   name: 'variable',
   group: 'inline',
-  content: 'inline*',
+  content: 'text*',
   inline: true,
   selectable: false,
   atom: true,
@@ -31,7 +37,17 @@ const Variable = Node.create({
   addOptions () {
     return {
       endCharacter: "}}",
-      renderLabel({ options, node }) {
+      renderHTML({ options, node }) {
+        const { endCharacter, startCharacter } = options;
+        const { name } = node.attrs;
+
+        return [
+          'span',
+          mergeAttributes(this.HTMLAttributes, options.HTMLAttributes),
+          0
+        ]
+      },
+      renderText({ options, node }) {
         const { endCharacter, startCharacter } = options;
         const { name } = node.attrs;
 
@@ -46,17 +62,29 @@ const Variable = Node.create({
   },
 
   renderHTML ({ HTMLAttributes, node }) {
+    const mergedOptions = { ...this.options }
+
+    mergedOptions.HTMLAttributes = mergeAttributes({ 'data-type': this.name }, this.options.HTMLAttributes, HTMLAttributes)
+
+    return this.options.renderHTML({
+      options: mergedOptions,
+      node,
+    })
+  },
+
+  renderText ({ HTMLAttributes, node }) {
     const attributes = mergeAttributes({ 'data-type': this.name }, HTMLAttributes);
 
     return [
       'span',
       attributes,
-      this.options.renderLabel({
+      this.options.renderText({
         options: this.options,
         node
       })
     ];
   },
+
 });
 
 export default VariableNode;
