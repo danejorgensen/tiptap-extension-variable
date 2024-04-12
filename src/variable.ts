@@ -63,7 +63,6 @@ const Variable = Node.create<VariableOptions>({
 
   renderHTML ({ HTMLAttributes, node }) {
     const mergedOptions = { ...this.options }
-
     mergedOptions.HTMLAttributes = mergeAttributes({ 'data-type': this.name }, this.options.HTMLAttributes, HTMLAttributes)
 
     return this.options.renderHTML({
@@ -73,18 +72,18 @@ const Variable = Node.create<VariableOptions>({
   },
 
   renderText ({ HTMLAttributes, node }) {
-    const attributes = mergeAttributes({ 'data-type': this.name }, HTMLAttributes);
+    const mergedOptions = { ...this.options }
+    mergedOptions.HTMLAttributes = mergeAttributes({ 'data-type': this.name }, this.options.HTMLAttributes, HTMLAttributes)
 
     return [
       'span',
       attributes,
       this.options.renderText({
-        options: this.options,
+        options: mergedOptions,
         node
       })
     ];
   },
-
 });
 
 export default VariableNode;

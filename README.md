@@ -14,6 +14,7 @@ https://github.com/ueberdosis/tiptap/issues/819
 https://github.com/ueberdosis/tiptap/issues/329
 https://codesandbox.io/p/sandbox/tiptap-custom-extension-variable-node-0bnf72
 https://github.com/talqui-oss/tiptap-extension-variable
+https://codesandbox.io/p/sandbox/drag-and-drop-variables-n29954
 
 ### Rendering React Component as variable
 
