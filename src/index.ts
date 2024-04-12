@@ -1,11 +1,5 @@
-import { Extension } from '@tiptap/core'
+import { Variable } from './variable';
 
-const MyExtension = Extension.create({
-  name: 'MyExtension',
+export * from './variable';
 
-  // do your stuff here
-})
-
-export { MyExtension }
-
-export default MyExtension
+export default Variable;
