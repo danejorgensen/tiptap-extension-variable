@@ -9,7 +9,6 @@ export interface VariableOptions {
 const Variable = Node.create<VariableOptions>({
   name: 'variable',
   group: 'inline',
-  content: 'text*',
   inline: true,
   selectable: false,
   atom: true,
@@ -43,8 +42,7 @@ const Variable = Node.create<VariableOptions>({
 
         return [
           'span',
-          mergeAttributes(this.HTMLAttributes, options.HTMLAttributes),
-          0
+          mergeAttributes(this.HTMLAttributes, options.HTMLAttributes)
         ]
       },
       renderText({ options, node }) {
@@ -77,7 +75,7 @@ const Variable = Node.create<VariableOptions>({
 
     return [
       'span',
-      attributes,
+      mergedOptions.HTMLAttributes,
       this.options.renderText({
         options: mergedOptions,
         node

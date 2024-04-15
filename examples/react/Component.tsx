@@ -20,6 +20,7 @@ const Component = (props: Props) => {
     selected,
   } = props;
 
+  const as: string = "span";
   const contentEditable: boolean = false;
   const startCharacter: string = "{{";
   const endCharacter: string = "}}";
@@ -29,10 +30,10 @@ const Component = (props: Props) => {
   }
 
   return (
-    <NodeViewWrapper>
-      <div contentEditable={contentEditable}>
+    <NodeViewWrapper as={as}>
+      <span contentEditable={contentEditable}>
         {display()}
-      </div>
+      </span>
     </NodeViewWrapper>
   );
 };

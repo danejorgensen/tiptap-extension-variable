@@ -1,4 +1,4 @@
-import { InputRule } from '@tiptap/core';
+import { InputRule, nodePasteRule } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
 
 import VariableComponent from './Component';
@@ -9,8 +9,8 @@ const values = {
   last_name: "Last name",
 };
 
-const variableInputRegex = /(?:^|\s)((?:{{ ?)((?:[\w]+))(?: ?}}))$/
-const variablePasteRegex = /(?:^|\s)((?:{{ ?)((?:[\w]+))(?: ?}}))/g
+const inputRegex = /(?:^|\s)((?:{{ ?)((?:[\w]+))(?: ?}}))$/
+const pasteRegex = /(?:^|\s)((?:{{ ?)((?:[\w]+))(?: ?}}))/g
 
 const allowedVariables = Object.keys(values)
 
@@ -22,7 +22,7 @@ const ReactVariableNode = VariableNode.extend({
   addInputRules () {
     return [
       new InputRule({
-        find: variableInputRegex,
+        find: inputRegex,
         handler: ({ state, range, match }) => {
           const keyword = match[2].trim().toLowerCase()
           if (allowedVariables.indexOf(keyword) > -1) {
@@ -44,6 +44,15 @@ const ReactVariableNode = VariableNode.extend({
         }
       })
     ]
+  },
+
+  addPasteRules() {
+    return [
+      new nodePasteRule({
+        find: pasteRegex,
+        type: this.type
+      })
+    ];
   },
 });
 
