@@ -8,13 +8,15 @@ A fresh Tiptap extension.
 npm install tiptap-extension-variable
 ```
 
-### Links
+### Other Links
 
-[Issue](https://github.com/ueberdosis/tiptap/issues/819)
-[Issue](https://github.com/ueberdosis/tiptap/issues/329)
-[Repo](https://github.com/talqui-oss/tiptap-extension-variable)
-[Sandbox](https://codesandbox.io/p/sandbox/tiptap-custom-extension-variable-node-0bnf72)
-[Sandbox](https://codesandbox.io/p/sandbox/drag-and-drop-variables-n29954)
+- [Issue](https://github.com/ueberdosis/tiptap/issues/819)
+- [Issue](https://github.com/ueberdosis/tiptap/issues/329)
+- [ExtensionRepo](https://github.com/talqui-oss/tiptap-extension-variable)
+- [TipTap VariableNodeView Repo](https://github.com/haiml123/tip-tap-variable-node-view)
+- [Nunjucks Sandbox](https://codesandbox.io/p/sandbox/tiptap-custom-extension-variable-node-0bnf72)
+- [Sandbox](https://codesandbox.io/p/sandbox/drag-and-drop-variables-n29954)
+- [Mention Extension](https://github.com/ueberdosis/tiptap/blob/main/packages/extension-mention/src/mention.ts)
 
 ### Rendering React Component as variable
 
